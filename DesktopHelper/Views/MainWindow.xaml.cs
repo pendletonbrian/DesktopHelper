@@ -29,6 +29,17 @@ namespace DesktopHelper.Views
 
         #endregion constructor
 
+        #region Public Methods
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion Public Methods
+
         #region Private Methods
 
         protected virtual void Dispose(bool disposing)
@@ -55,18 +66,19 @@ namespace DesktopHelper.Views
         //     Dispose(disposing: false);
         // }
 
-        #endregion Private Methods
-
-        #region Public Methods
-
-        public void Dispose()
+        private void ShowNicPanelCommand_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
         {
-            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
+            e.CanExecute = true;
+
+            e.Handled = true;
         }
 
-        #endregion Public Methods
+        private void ShowNicPanelCommand_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            Console.WriteLine("ShowNicPanelCommand_Executed");
+        }
+
+        #endregion Private Methods
 
     }
 }

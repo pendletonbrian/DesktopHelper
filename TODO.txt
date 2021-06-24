@@ -1,0 +1,1 @@
+Better implementation of MDI (ish): https://rachel53461.wordpress.com/2011/12/18/navigation-with-mvvm-2/

@@ -5,13 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:pageTransitions="clr-namespace:DesktopHelper.Classes.WpfPageTransitions"
         xmlns:classes='clr-namespace:DesktopHelper.Classes'
-        xmlns:viewmodels="clr-namespace:DesktopHelper.ViewModels"
+        xmlns:vm="clr-namespace:DesktopHelper.ViewModels"
+        d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel}"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="{Binding TitleText}"
         FontSize="14"
-        Height="450"
+        Height="800"
         Width="800">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static vm:MainWindowViewModel.ShowNicPanelCommand}"
+                        CanExecute="ShowNicPanelCommand_CanExecute"
+                        Executed="ShowNicPanelCommand_Executed"/>
+    </Window.CommandBindings>
+    
     <Window.Resources>
         <classes:BooleanVisibilityConverter x:Key="VisibilityConverter" />
     </Window.Resources>
@@ -39,6 +47,37 @@
             <RowDefinition Height="Auto" />
 
         </Grid.RowDefinitions>
+
+        <!-- Left hand sidebar -->
+        <Grid Grid.Column="0"
+              Grid.Row="0"
+              Margin="{StaticResource marginThickness}">
+
+            <Grid.ColumnDefinitions>
+                
+                <!-- There's only going to be one column. -->
+                <ColumnDefinition Width="*" />
+                
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                
+                <!-- Show NIC Panel -->
+                <RowDefinition Height="Auto" />
+                
+            </Grid.RowDefinitions>
+
+            <!-- Show NIC Panel -->
+            <Button Grid.Column="0"
+                    Grid.Row="0"
+                    Content="NIC"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Margin="{StaticResource marginThickness}"
+                    Height="26"
+                    Command="{x:Static vm:MainWindowViewModel.ShowNicPanelCommand}"/>
+
+        </Grid>
 
         <!-- Main area -->
         <pageTransitions:PageTransition x:Name="pageTransitionControl"

@@ -5,12 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Controls;
+using System.Windows.Input;
 using DesktopHelper.Classes;
 
 namespace DesktopHelper.ViewModels
 {
     public class MainWindowViewModel : NotifyObject, IDisposable
     {
+        #region Public Members
+
+        public static RoutedCommand ShowNicPanelCommand = new RoutedCommand();
+
+        #endregion Public Members
+
         #region Private Members
 
         /// <summary>
