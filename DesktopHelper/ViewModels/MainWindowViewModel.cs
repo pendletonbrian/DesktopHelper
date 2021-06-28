@@ -7,6 +7,7 @@ using System.Timers;
 using System.Windows.Controls;
 using System.Windows.Input;
 using DesktopHelper.Classes;
+using DesktopHelper.Views;
 
 namespace DesktopHelper.ViewModels
 {
@@ -236,6 +237,7 @@ namespace DesktopHelper.ViewModels
                     break;
 
                 case Enumerations.Page.DirectoryContents:
+                    newPage = new DirectoryContentsView(this);
                     break;
 
                 case Enumerations.Page.NIC:
@@ -246,7 +248,7 @@ namespace DesktopHelper.ViewModels
                     break;
 
                 default:
-                    throw new Exception($"Unhandled case: {pageType}");
+                    throw new ArgumentException($"Unhandled case: {pageType}");
             }
 
             if (newPage is null)
