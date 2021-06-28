@@ -14,7 +14,12 @@ namespace DesktopHelper.ViewModels
     {
         #region Public Members
 
-        public static RoutedCommand ShowNicPanelCommand = new RoutedCommand();
+        public static RoutedCommand ChangePageCommand = new();
+
+        /// <summary>
+        /// The base string to display in the title bar.
+        /// </summary>
+        internal const string STR_DEFAULT_TITLE_TEXT = "Desktop helper";
 
         #endregion Public Members
 
@@ -23,7 +28,6 @@ namespace DesktopHelper.ViewModels
         /// <summary>
         /// How long, in seconds, to display the status bar message.
         /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         private const int MAX_STATUS_MSG_COUNT = 8;
 
         /// <summary>
@@ -34,18 +38,12 @@ namespace DesktopHelper.ViewModels
         /// <summary>
         /// The timer for the status message.
         /// </summary>
-        private Timer m_StatusMsgTimer = new Timer();
+        private readonly Timer m_StatusMsgTimer = new();
 
         /// <summary>
         /// Text to display in status bar.
         /// </summary>
         private string m_StatusText = string.Empty;
-
-        /// <summary>
-        /// The base string to display in the title bar.
-        /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        private const string STR_DEFAULT_TITLE_TEXT = "Desktop helper";
 
         /// <summary>
         /// Text to display in the title bar.
@@ -61,11 +59,6 @@ namespace DesktopHelper.ViewModels
         /// Used by IDisposable.
         /// </summary>
         private bool disposedValue;
-
-        /// <summary>
-        /// The list of the controls that have been used in the current path.
-        /// </summary>
-        private readonly Stack<UserControl> m_PageList = new();
 
         /// <summary>
         /// The control in the main area.
@@ -128,6 +121,11 @@ namespace DesktopHelper.ViewModels
             }
         }
 
+        /// <summary>
+        /// List of items to show on the left hand side bar.
+        /// </summary>
+        public List<SelectionItem> SelectionItems { get; } = new();
+
         #endregion Public Properties
 
         #region constructor
@@ -140,6 +138,10 @@ namespace DesktopHelper.ViewModels
             m_StatusMsgTimer.Elapsed += MsgTimer_Elapsed;
 
             m_PageTransitionControl = transitionControl;
+
+            SelectionItems.Add(new SelectionItem("Directory Contents", Enumerations.Page.DirectoryContents));
+            SelectionItems.Add(new SelectionItem("NIC", Enumerations.Page.NIC));
+            SelectionItems.Add(new SelectionItem("Time", Enumerations.Page.Time));
         }
 
         #endregion constructor
@@ -226,6 +228,34 @@ namespace DesktopHelper.ViewModels
             object additionalData = null,
             Enumerations.PageTransitionType transitionType = Enumerations.PageTransitionType.SlideAndFade)
         {
+            UserControl newPage = null;
+
+            switch (pageType)
+            {
+                case Enumerations.Page.None:
+                    break;
+
+                case Enumerations.Page.DirectoryContents:
+                    break;
+
+                case Enumerations.Page.NIC:
+                    
+                    break;
+
+                case Enumerations.Page.Time:
+                    break;
+
+                default:
+                    throw new Exception($"Unhandled case: {pageType}");
+            }
+
+            if (newPage is null)
+            {
+                return;
+            }
+
+            m_PageTransitionControl.ShowPage(newPage);
+            m_PageTransitionControl.TransitionType = transitionType;
         }
 
         #endregion Public Methods

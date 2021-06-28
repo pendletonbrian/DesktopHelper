@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using DesktopHelper.Classes;
 using DesktopHelper.ViewModels;
 
 namespace DesktopHelper.Views
@@ -66,16 +67,31 @@ namespace DesktopHelper.Views
         //     Dispose(disposing: false);
         // }
 
-        private void ShowNicPanelCommand_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
+        private void ChangePageCommand_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
 
             e.Handled = true;
         }
 
-        private void ShowNicPanelCommand_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        private void ChangePageCommand_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
-            Console.WriteLine("ShowNicPanelCommand_Executed");
+            try
+            {
+                var selectedPage = (Enumerations.Page)e.Parameter;
+
+                m_ViewModel.ShowNextPage(selectedPage,
+                    null,
+                    Enumerations.PageTransitionType.FlipAndFade);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, 
+                    $"There was an exception: {ex.Message}", 
+                    MainWindowViewModel.STR_DEFAULT_TITLE_TEXT, 
+                    MessageBoxButton.OK, 
+                    MessageBoxImage.Error);
+            }
         }
 
         #endregion Private Methods

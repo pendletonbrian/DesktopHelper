@@ -15,9 +15,9 @@
         Width="800">
 
     <Window.CommandBindings>
-        <CommandBinding Command="{x:Static vm:MainWindowViewModel.ShowNicPanelCommand}"
-                        CanExecute="ShowNicPanelCommand_CanExecute"
-                        Executed="ShowNicPanelCommand_Executed"/>
+        <CommandBinding Command="{x:Static vm:MainWindowViewModel.ChangePageCommand}"
+                        CanExecute="ChangePageCommand_CanExecute"
+                        Executed="ChangePageCommand_Executed"/>
     </Window.CommandBindings>
     
     <Window.Resources>
@@ -49,42 +49,28 @@
         </Grid.RowDefinitions>
 
         <!-- Left hand sidebar -->
-        <Grid Grid.Column="0"
-              Grid.Row="0"
-              Margin="{StaticResource marginThickness}">
-
-            <Grid.ColumnDefinitions>
-                
-                <!-- There's only going to be one column. -->
-                <ColumnDefinition Width="*" />
-                
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                
-                <!-- Show NIC Panel -->
-                <RowDefinition Height="Auto" />
-                
-            </Grid.RowDefinitions>
-
-            <!-- Show NIC Panel -->
-            <Button Grid.Column="0"
-                    Grid.Row="0"
-                    Content="NIC"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    Margin="{StaticResource marginThickness}"
-                    Height="26"
-                    Command="{x:Static vm:MainWindowViewModel.ShowNicPanelCommand}"/>
-
-        </Grid>
+        <ItemsControl Grid.Column="0"
+                      Grid.Row="0"
+                      Margin="{StaticResource marginThickness}"
+                      ItemsSource="{Binding SelectionItems}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding Text}"
+                            Command="{x:Static vm:MainWindowViewModel.ChangePageCommand}"
+                            CommandParameter="{Binding Page}"
+                            Height="26"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Margin="{StaticResource marginThickness}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
 
         <!-- Main area -->
         <pageTransitions:PageTransition x:Name="pageTransitionControl"
                                         Margin="12"
                                         Grid.Column="2"
-                                        Grid.Row="0"
-                                        TransitionType="SlideAndFade" />
+                                        Grid.Row="0"/>
 
         <!-- Status Bar -->
         <Border Grid.ColumnSpan="3"

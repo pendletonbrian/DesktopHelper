@@ -11,7 +11,10 @@
         /// </remarks>
         public enum Page
         {
-            None = 0
+            None = 0,
+            DirectoryContents,
+            NIC,
+            Time
         }
 
         /// <summary>
