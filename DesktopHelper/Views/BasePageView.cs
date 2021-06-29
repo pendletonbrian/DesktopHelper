@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using DesktopHelper.ViewModels;
 
 namespace DesktopHelper.Views
@@ -44,5 +39,9 @@ namespace DesktopHelper.Views
 
         #endregion Private Methods
 
+        internal void SetStatusText(string text, bool autoRemove = true)
+        {
+            m_MainWindowVM.SetStatusMessage(text, autoRemove);
+        }
     }
 }

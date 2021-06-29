@@ -3,8 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:pageTransitions="clr-namespace:DesktopHelper.Classes.WpfPageTransitions"
         xmlns:classes='clr-namespace:DesktopHelper.Classes'
+        xmlns:pageTransitions="clr-namespace:DesktopHelper.Classes.WpfPageTransitions"
         xmlns:vm="clr-namespace:DesktopHelper.ViewModels"
         d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel}"
         mc:Ignorable="d"
@@ -17,35 +17,35 @@
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static vm:MainWindowViewModel.ChangePageCommand}"
                         CanExecute="ChangePageCommand_CanExecute"
-                        Executed="ChangePageCommand_Executed"/>
+                        Executed="ChangePageCommand_Executed" />
     </Window.CommandBindings>
-    
+
     <Window.Resources>
         <classes:BooleanVisibilityConverter x:Key="VisibilityConverter" />
     </Window.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
-            
+
             <!-- Left hand sidebar -->
-            <ColumnDefinition Width="200" MinWidth="200" MaxWidth="400" />
-            
+            <ColumnDefinition Width="200"
+                              MinWidth="200"
+                              MaxWidth="400" />
+
             <!-- Splitter -->
             <ColumnDefinition Width="Auto" />
-            
+
             <!-- Main area -->
             <ColumnDefinition Width="*" />
-            
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            
+
             <!-- Left hand sidebar and main area -->
             <RowDefinition Height="*" />
 
             <!-- Status bar -->
             <RowDefinition Height="Auto" />
-
         </Grid.RowDefinitions>
 
         <!-- Left hand sidebar -->
@@ -70,7 +70,7 @@
         <pageTransitions:PageTransition x:Name="pageTransitionControl"
                                         Margin="12"
                                         Grid.Column="2"
-                                        Grid.Row="0"/>
+                                        Grid.Row="0" />
 
         <!-- Status Bar -->
         <Border Grid.ColumnSpan="3"
@@ -115,6 +115,5 @@
                       Grid.Row="0"
                       Panel.ZIndex="1"
                       Style="{StaticResource StandardGridSplitter}" />
-        
     </Grid>
 </Window>

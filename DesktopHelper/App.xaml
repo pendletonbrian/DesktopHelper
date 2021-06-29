@@ -9,20 +9,19 @@
                 <ResourceDictionary Source="Resources/Defaults.xaml" />
                 <ResourceDictionary Source="Resources/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Brushes.xaml" />
-                <!--
-                <ResourceDictionary Source="Resources/Image.xaml" />
-                <ResourceDictionary Source="Resources/GroupBox.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/Image.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/GroupBox.xaml" />-->
                 <ResourceDictionary Source="Resources/GridSplitter.xaml" />
-                <!--
-                <ResourceDictionary Source="Resources/TabControl.xaml" />
-                <ResourceDictionary Source="Resources/Menu.xaml" />
+                
+                <!--<ResourceDictionary Source="Resources/TabControl.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/Menu.xaml" />-->
                 <ResourceDictionary Source="Resources/ListView.xaml" />
-                <ResourceDictionary Source="Resources/Dictionary.xaml" />
-                <ResourceDictionary Source="Resources/TextBox.xaml" />
-                <ResourceDictionary Source="Resources/TextBlock.xaml" />
-                <ResourceDictionary Source="Resources/ToolTip.xaml" />
-                <ResourceDictionary Source="Resources/Separator.xaml" />
-                <ResourceDictionary Source="Resources/RadioButton.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/Dictionary.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/TextBox.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/TextBlock.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/ToolTip.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/Separator.xaml" />-->
+                <!--<ResourceDictionary Source="Resources/RadioButton.xaml" />-->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

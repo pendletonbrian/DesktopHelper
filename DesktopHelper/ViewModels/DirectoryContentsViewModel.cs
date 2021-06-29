@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DesktopHelper.Classes;
 
 namespace DesktopHelper.ViewModels
 {
-    public class DirectoryContentsViewModel
+    public class DirectoryContentsViewModel : NotifyObject
     {
     }
 }

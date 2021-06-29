@@ -86,15 +86,14 @@ namespace DesktopHelper.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, 
-                    $"There was an exception: {ex.Message}", 
-                    MainWindowViewModel.STR_DEFAULT_TITLE_TEXT, 
-                    MessageBoxButton.OK, 
+                MessageBox.Show(this,
+                    $"There was an exception: {ex.Message}",
+                    MainWindowViewModel.STR_DEFAULT_TITLE_TEXT,
+                    MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
         }
 
         #endregion Private Methods
-
     }
 }

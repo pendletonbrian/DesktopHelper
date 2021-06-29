@@ -1,0 +1,46 @@
+﻿<local:BasePageView x:Class="DesktopHelper.Views.NicPageView"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:vm="clr-namespace:DesktopHelper.ViewModels"
+                    xmlns:local="clr-namespace:DesktopHelper.Views"
+                    d:DataContext="{d:DesignInstance Type=vm:NicPageViewModel}"
+                    Loaded="NicPageView_Loaded"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    mc:Ignorable="d"
+                    d:DesignHeight="450"
+                    d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ListView Grid.Column="0"
+                  Grid.Row="0"
+                  Margin="{StaticResource marginThickness}"
+                  ItemsSource="{Binding NicNames}"
+                  SelectedItem="{Binding SelectedIpAddress}"
+                  ItemContainerStyle="{StaticResource AlternatingListViewItemStyle}"
+                  AlternationCount="2"
+                  SelectionMode="Single"
+                  HorizontalAlignment="Stretch">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <ContextMenu.CommandBindings>
+                        <CommandBinding Command="{x:Static vm:NicPageViewModel.CopyIpAddressCommand}"
+                                        CanExecute="CopyIpAddressCommand_CanExecute"
+                                        Executed="CopyIpAddressCommand_Executed" />
+                    </ContextMenu.CommandBindings>
+                    <MenuItem Header="Copy IP Address"
+                              Command="{x:Static vm:NicPageViewModel.CopyIpAddressCommand}" />
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+    </Grid>
+</local:BasePageView>
